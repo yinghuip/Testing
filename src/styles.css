@@ -1,0 +1,13 @@
+/* You can add global styles to this file, and also import other style files */
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+.content{
+    background-color: whitesmoke;
+    min-height: 100vh;
+}
+.logo{
+    background-color: white;
+    height: 50px;
+}
+.topbar{
+    background-color: white;
+}

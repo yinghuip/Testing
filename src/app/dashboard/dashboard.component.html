@@ -1,0 +1,68 @@
+<div class="container">
+    <br />
+    <div class="row">
+        <mat-card>
+            <div class="row">
+                <div class="col-sm-6">
+                    <mat-form-field>
+                        <input type="text" matInput placeholder="Name" [(ngModel)]="customerDataItem.Name"
+                            #Name="ngModel" (ngModelChange)="filterName($event)" [matAutocomplete]="auto">
+                    </mat-form-field>
+                    <mat-autocomplete #auto="matAutocomplete">
+                        <mat-option *ngFor="let option of cusomerFilter" [value]="option">{{option}}</mat-option>
+                    </mat-autocomplete>
+                </div>
+
+                <div class="col-sm-6">
+                    <mat-form-field>
+                        <mat-select [(ngModel)]="customerDataItem.DateOption" #dateRange="ngModel">
+                            <mat-option *ngFor="let item of DateOptions" [value]="item.Id">
+                                {{item.Label}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <mat-radio-group [(ngModel)]="customerDataItem.HaulioRef">
+                        <mat-radio-button *ngFor="let item of HaulioRefOption" [value]="item.Id">
+                            {{item.Name}}
+                        </mat-radio-button>
+                    </mat-radio-group>
+                </div>
+            </div>
+        </mat-card>
+    </div>
+    <br />
+    <div class="row">
+        <mat-card *ngIf="customerDataItem.HaulioRef || customerDataItem.Name">
+            <mat-card-content>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h1>
+                            No. of container(s) arrvial Departure
+                        </h1>
+                    </div>
+                </div>
+
+                <div *ngIf="customerDataItem.HaulioRef == 1">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            import , export, one way
+                        </div>
+                    </div>
+
+                </div>
+                <div *ngIf="customerDataItem.HaulioRef == 2">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            one way
+                        </div>
+                    </div>
+
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>
